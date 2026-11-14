@@ -1,0 +1,40 @@
+{
+  "id": "ask",
+  "name": "Ask",
+  "version": "0.1.0",
+  "description": "Put a clip to a model running on your machine through Ollama: summarize, fix, explain, or ask your own question",
+  "author": "georgemandis",
+  "type": "native",
+  "entry": {
+    "macos-arm64": "lib/libschrodinger_plugin_ask.dylib",
+    "linux-x86_64": "lib/libschrodinger_plugin_ask.so",
+    "windows-x86_64": "lib/schrodinger_plugin_ask.dll"
+  },
+  "platforms": ["macos", "linux", "windows"],
+  "confirm": true,
+  "timeoutSeconds": 120,
+  "prompt": {
+    "mode": "ask",
+    "prefix": "?",
+    "hint": "Type ? and a question in the search field, then press ↩.\n\n?what is the deadline\n?reply politely, declining\n?turn this into a table\n\nThe answer appears here. Press ↩ again to use it."
+  },
+  "modes": [
+    { "id": "summarize", "label": "Summarize", "default": true },
+    { "id": "points", "label": "Key points" },
+    { "id": "fix", "label": "Fix spelling and grammar" },
+    { "id": "shorter", "label": "Make shorter" },
+    { "id": "plain", "label": "Plain language" },
+    { "id": "explain", "label": "Explain" },
+    { "id": "english", "label": "Translate to English" },
+    { "id": "ask", "label": "Your question (type ?)" }
+  ],
+  "config": {
+    "model": {
+      "type": "select",
+      "default": "Automatic",
+      "label": "Model",
+      "description": "Automatic uses the most recently installed general model between 2 and 12 GB. A name picks the newest installed model that starts with it. Models that Ollama runs on its cloud are never used.",
+      "options": ["Automatic", "llama3.2", "llama3", "gemma", "qwen", "mistral", "phi", "deepseek-r1", "gpt-oss"]
+    }
+  }
+}
